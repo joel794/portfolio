@@ -412,27 +412,23 @@
           </div>
 
           <div class="col-lg-6">
-            <form action="forms/contact.php" role="form" class="php-email-form" id="submit-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-                </div>
+            <form action="https://api.web3forms.com/submit" method="POST" id="form" class="bg-light p-4 p-md-5 contact-form">
+              <div class="form-group">
+                <input type="hidden" name="access_key" value="ef0f795e-4134-4467-b31b-922e3459ec7c">
+                <input type="text" id="name" name="name" class="form-control" placeholder="Your Name">
+                <span id="name_error" class="text-danger"></span>
               </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+              <div class="form-group">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Your Email">
+                <span id="email_error" class="text-danger"></span>
               </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
+              <div class="form-group">
+                <textarea id="message" name="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                <span id="message_error" class="text-danger"></span>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="form-group">
+                <input type="submit" id="btn-click" value="Send Message" class="btn btn-primary py-3 px-5"/>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
 
@@ -479,25 +475,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script>
-    $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbzNqFqJevbZ0fIJpzXSslcAWU1SShJXyaaH9eryv3wUV1E8Ejfg4sTkizPZSa07Vhc/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
-        })
-    })
-</script>
 
 </body>
 
